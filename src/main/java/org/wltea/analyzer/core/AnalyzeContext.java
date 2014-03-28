@@ -42,7 +42,7 @@ import org.wltea.analyzer.dic.Dictionary;
 class AnalyzeContext {
 	
 	//默认缓冲区大小
-	private static final int BUFF_SIZE = 4096;
+	private static final int BUFF_SIZE = 16384;
 	//缓冲区耗尽的临界值
 	private static final int BUFF_EXHAUST_CRITICAL = 100;	
 	
