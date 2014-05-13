@@ -106,6 +106,23 @@ public class Dictionary {
 	}
 	
 	/**
+	 * 重新加载词典
+	 * @return void
+	 */
+	public void reloadDictionary() {
+		synchronized(Dictionary.class){
+			logger.info("[Dict reLoading...]");
+			this.loadMainDict();
+			this.loadSurnameDict();
+			this.loadQuantifierDict();
+			this.loadSuffixDict();
+			this.loadPrepDict();
+			this.loadStopWordDict();
+			logger.info("[Dict reLoaded.]");
+		}
+	}
+	
+	/**
 	 * 获取词典单子实例
 	 * @return Dictionary 单例对象
 	 */
