@@ -112,12 +112,21 @@ public class Dictionary {
 	public void reloadDictionary() {
 		synchronized(Dictionary.class){
 			logger.info("[Dict reLoading...]");
-			this.loadMainDict();
-			this.loadSurnameDict();
-			this.loadQuantifierDict();
-			this.loadSuffixDict();
-			this.loadPrepDict();
-			this.loadStopWordDict();
+			Dictionary _dict = new Dictionary();
+			_dict.configuration= this.configuration;
+            _dict.loadMainDict();
+            _dict.loadSurnameDict();
+            _dict.loadQuantifierDict();
+            _dict.loadSuffixDict();
+            _dict.loadPrepDict();
+            _dict.loadStopWordDict();
+            logger.info("[Dict new loaded.]");
+            this._MainDict = _dict._MainDict;
+            this._SurnameDict = _dict._SurnameDict;
+            this._QuantifierDict = _dict._QuantifierDict;
+            this._SuffixDict = _dict._SuffixDict;
+            this._PrepDict = _dict._PrepDict;
+            this._StopWords = _dict._StopWords;
 			logger.info("[Dict reLoaded.]");
 		}
 	}
