@@ -25,19 +25,13 @@
  */
 package org.wltea.analyzer.dic;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Collection;
-import java.util.List;
-
 import org.elasticsearch.common.logging.ESLogger;
 import org.elasticsearch.common.logging.Loggers;
 import org.wltea.analyzer.cfg.Configuration;
+
+import java.io.*;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 词典管理类,单子模式
@@ -184,7 +178,7 @@ public class Dictionary {
 	 * @return Hit 匹配结果描述
 	 */
 	public Hit matchInMainDict(char[] charArray , int begin, int length){
-        return singleton._MainDict.match(charArray, begin, length);
+        return singleton._MainDict.match(String.valueOf(charArray).toLowerCase().toCharArray(), begin, length);
 	}
 	
 	/**
@@ -192,7 +186,7 @@ public class Dictionary {
 	 * @return Hit 匹配结果描述
 	 */
 	public Hit matchInQuantifierDict(char[] charArray , int begin, int length){
-		return singleton._QuantifierDict.match(charArray, begin, length);
+		return singleton._QuantifierDict.match(String.valueOf(charArray).toLowerCase().toCharArray(), begin, length);
 	}
 	
 	
@@ -211,7 +205,7 @@ public class Dictionary {
 	 * @return boolean
 	 */
 	public boolean isStopWord(char[] charArray , int begin, int length){			
-		return singleton._StopWords.match(charArray, begin, length).isMatch();
+		return singleton._StopWords.match(String.valueOf(charArray).toLowerCase().toCharArray(), begin, length).isMatch();
 	}	
 	
 	/**
