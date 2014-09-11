@@ -80,7 +80,7 @@ public class Dictionary {
 	 * 该方法提供了一个在应用加载阶段就初始化字典的手段
 	 * @return Dictionary
 	 */
-	public static Dictionary initial(Configuration cfg){
+	public static synchronized Dictionary initial(Configuration cfg){
 		if(singleton == null){
 			synchronized(Dictionary.class){
 				if(singleton == null){
@@ -145,7 +145,7 @@ public class Dictionary {
 			for(String word : words){
 				if (word != null) {
 					//批量加载词条到主内存词典中
-					singleton._MainDict.fillSegment(word.trim().toLowerCase().toCharArray());
+					singleton._MainDict.fillSegment(word.trim().toCharArray());
 				}
 			}
 		}
@@ -159,7 +159,7 @@ public class Dictionary {
 			for(String word : words){
 				if (word != null) {
 					//批量屏蔽词条
-					singleton._MainDict.disableSegment(word.trim().toLowerCase().toCharArray());
+					singleton._MainDict.disableSegment(word.trim().toCharArray());
 				}
 			}
 		}
@@ -231,7 +231,7 @@ public class Dictionary {
 			do {
 				theWord = br.readLine();
 				if (theWord != null && !"".equals(theWord.trim())) {
-					_MainDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
+					_MainDict.fillSegment(theWord.trim().toCharArray());
 				}
 			} while (theWord != null);
 			
@@ -281,7 +281,7 @@ public class Dictionary {
 						theWord = br.readLine();
                         if (theWord != null && !"".equals(theWord.trim())) {
 							//加载扩展词典数据到主内存词典中
-							_MainDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
+							_MainDict.fillSegment(theWord.trim().toCharArray());
 						}
 					} while (theWord != null);
 					
@@ -324,7 +324,7 @@ public class Dictionary {
             do {
                 theWord = br.readLine();
                 if (theWord != null && !"".equals(theWord.trim())) {
-                    _StopWords.fillSegment(theWord.trim().toLowerCase().toCharArray());
+                    _StopWords.fillSegment(theWord.trim().toCharArray());
                 }
             } while (theWord != null);
 
@@ -368,7 +368,7 @@ public class Dictionary {
 						theWord = br.readLine();
 						if (theWord != null && !"".equals(theWord.trim())) {
 							//加载扩展停止词典数据到内存中
-                            _StopWords.fillSegment(theWord.trim().toLowerCase().toCharArray());
+                            _StopWords.fillSegment(theWord.trim().toCharArray());
 						}
 					} while (theWord != null);
 					
@@ -409,7 +409,7 @@ public class Dictionary {
 			do {
 				theWord = br.readLine();
 				if (theWord != null && !"".equals(theWord.trim())) {
-					_QuantifierDict.fillSegment(theWord.trim().toLowerCase().toCharArray());
+					_QuantifierDict.fillSegment(theWord.trim().toCharArray());
 				}
 			} while (theWord != null);
 			
@@ -464,7 +464,6 @@ public class Dictionary {
             }
         }
     }
-
 
 
     private void loadSuffixDict(){
