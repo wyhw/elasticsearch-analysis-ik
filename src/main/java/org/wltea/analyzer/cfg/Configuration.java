@@ -29,7 +29,11 @@ public class Configuration {
     public  Configuration(Environment env){
 		props = new Properties();
         environment = env;
-	File fileConfig= new File(environment.configFile().toFile(), FILE_NAME);
+
+
+		File fileConfig= new File(environment.configFile().toFile(), FILE_NAME);
+
+
         InputStream input = null;
         try {
             input = new FileInputStream(fileConfig);
