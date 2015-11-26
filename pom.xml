@@ -30,10 +30,10 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:medcl/elasticsearch-analysis-ik.git</connection>
+        <connection>scm:git:git@github.com:wyhw/elasticsearch-analysis-ik.git</connection>
         <developerConnection>scm:git:git@github.com:medcl/elasticsearch-analysis-ik.git
         </developerConnection>
-        <url>http://github.com/medcl/elasticsearch-analysis-ik</url>
+        <url>http://github.com/wyhw/elasticsearch-analysis-ik</url>
     </scm>
 
     <parent>
