@@ -10,7 +10,9 @@ Versions
 
 IK version | ES version
 -----------|-----------
-master | 2.0.0 -> master
+master | 2.1.1 -> master
+1.6.1 | 2.1.1
+1.6.0 | 2.1.0
 1.5.0 | 2.0.0
 1.4.1 | 1.7.2
 1.4.0 | 1.6.0
@@ -230,9 +232,10 @@ have fun.
 ```bash
 git clone https://github.com/medcl/elasticsearch-analysis-ik
 cd elasticsearch-analysis-ik
+mvn clean
 mvn compile
 mvn package
-copy file  #{project_path}/elasticsearch-analysis-ik/target/releases/elasticsearch-analysis-ik-xxx-jar-with-dependencies.jar to your elasticsearch's folder: plugins/ik
+copy & unzip file  #{project_path}/elasticsearch-analysis-ik/target/releases/elasticsearch-analysis-ik-xxx.zip to your elasticsearch's folder: plugins/ik
 ```
 
 Thanks
