@@ -1,7 +1,7 @@
-IK Analysis for ElasticSearch
+IK Analysis for Elasticsearch
 =============================
 
-The IK Analysis plugin integrates Lucene IK analyzer into elasticsearch, support customized dictionary.
+The IK Analysis plugin integrates Lucene IK analyzer (http://code.google.com/p/ik-analyzer/) into elasticsearch, support customized dictionary.
 
 Analyzer: `ik_smart` , `ik_max_word` , Tokenizer: `ik_smart` , `ik_max_word` 
 
@@ -10,9 +10,11 @@ Versions
 
 IK version | ES version
 -----------|-----------
-master | 2.1.1 -> master
-1.6.1 | 2.1.1
-1.6.0 | 2.1.0
+master | 2.3.1 -> master
+1.9.1 | 2.3.1
+1.9.0 | 2.3.0
+1.8.1 | 2.2.1
+1.7.0 | 2.1.1
 1.5.0 | 2.0.0
 1.4.1 | 1.7.2
 1.4.0 | 1.6.0
@@ -21,10 +23,8 @@ master | 2.1.1 -> master
 1.2.8 | 1.3.2
 1.2.7 | 1.2.1
 1.2.6 | 1.0.0
-1.2.5 | 0.90.2
-1.2.3 | 0.90.2
-1.2.0 | 0.90.0
-1.1.3 | 0.20.2
+1.2.5 | 0.90.x
+1.1.3 | 0.20.x
 1.1.2 | 0.19.x
 1.0.0 | 0.16.2 -> 0.19.0
 
@@ -37,11 +37,9 @@ Install
 
 copy and unzip `target/releases/elasticsearch-analysis-ik-{version}.zip` to `your-es-root/plugins/ik`
 
-2.config files:
 
-download the dict files,unzip these dict file into your elasticsearch's config folder,such as: `your-es-root/config/ik`
+2.restart elasticsearch
 
-3.restart elasticsearch
 
 Tips:
 
@@ -178,7 +176,7 @@ Result
 
 ### Dictionary Configuration
 
-#### `config/ik/IKAnalyzer.cfg.xml`
+#### `plugins/elasticsearch-analysis-ik-*/config/ik/IKAnalyzer.cfg.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -226,7 +224,7 @@ have fun.
 
 请确保你的扩展词典的文本格式为 UTF8 编码
 
-2.如何手动安装，以 1.3.0 為例？（参考：https://github.com/medcl/elasticsearch-analysis-ik/issues/46 ）
+2.如何手动安装？
 
 
 ```bash
@@ -235,8 +233,10 @@ cd elasticsearch-analysis-ik
 mvn clean
 mvn compile
 mvn package
-copy & unzip file  #{project_path}/elasticsearch-analysis-ik/target/releases/elasticsearch-analysis-ik-xxx.zip to your elasticsearch's folder: plugins/ik
 ```
+
+copy & unzip file  #{project_path}/elasticsearch-analysis-ik/target/releases/elasticsearch-analysis-ik-*.zip to your elasticsearch's folder: plugins/ik
+
 
 Thanks
 ------

@@ -23,11 +23,6 @@ import static java.rmi.Naming.bind;
 
 
 public class AnalysisIkPlugin extends Plugin {
-    private final Settings settings;
-    @Inject
-    public AnalysisIkPlugin(Settings settings){
-        this.settings = settings;
-    }
 
     @Override public String name() {
         return "analysis-ik";
@@ -42,14 +37,8 @@ public class AnalysisIkPlugin extends Plugin {
     public Collection<Module> nodeModules() {
         return Collections.<Module>singletonList(new IKIndicesAnalysisModule());
     }
-
-    public static class ConfiguredExampleModule extends AbstractModule {
-        @Override
-        protected void configure() {
-        }
-    }
-
     public void onModule(AnalysisModule module) {
         module.addProcessor(new IkAnalysisBinderProcessor());
     }
+
 }
